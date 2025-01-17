@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - HealthierMe</title>
+    <style>
+        :root {
+            --dark-bg: #1a1f2b;
+            --primary-blue: #007BFF;
+            --text-white: #ffffff;
+            --text-gray: rgba(255, 255, 255, 0.6);
+            --input-bg: rgba(255, 255, 255, 0.1);
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .header-title {
+            flex: 1;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            background: var(--input-bg);
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: var(--text-white);
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-blue);
+            border: none;
+            border-radius: 8px;
+            color: var(--text-white);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .forgot-password a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .divider {
+            text-align: center;
+            color: var(--text-gray);
+            margin: 24px 0;
+        }
+
+        .social-login {
+            margin-bottom: 16px;
+        }
+
+        .social-button {
+            width: 100%;
+            padding: 12px;
+            background: var(--text-white);
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .social-button img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .privacy-notice {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 12px;
+            margin-top: 32px;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .input-error {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-button">←</a>
+            <h1 class="header-title">Log In</h1>
+            <div style="width: 24px;"></div>
+        </header>
+
+        <form id="login-form">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+                <div id="error-email" class="error-message"></div>
+            </div>
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="number" name="phone" required>
+                <div id="error-phone" class="error-message"></div>
+            </div>
+
+            <button type="submit" class="btn-login">Log In</button>
+
+            <div class="forgot-password">
+                <a href="#">Forgot Email Address?</a>
+            </div>
+
+            <div class="divider">OR</div>
+
+            <div class="social-login">
+                <button type="button" class="social-button" onclick="continueWith('google')">
+                    <img src="img/google-icon.png" alt="Google">
+                    Continue with Google
+                </button>
+                <button type="button" class="social-button" onclick="continueWith('facebook')">
+                    <img src="img/facebook-icon.png" alt="Facebook">
+                    Continue with Facebook
+                </button>
+            </div>
+
+            <p class="privacy-notice">
+                We will never post anything without your permission.
+            </p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.email.value;
+            const phone = this.phone.value;
+            let valid = true;
+
+            // Clear previous error messages
+            document.getElementById('error-email').textContent = '';
+            document.getElementById('error-phone').textContent = '';
+            this.email.classList.remove('input-error');
+            this.phone.classList.remove('input-error');
+
+            // Validate email
+            if (!email) {
+                valid = false;
+                document.getElementById('error-email').textContent = 'Email is required.';
+                this.email.classList.add('input-error');
+            }
+
+            // Validate phone
+            if (!phone) {
+                valid = false;
+                document.getElementById('error-phone').textContent = 'Phone number is required.';
+                this.phone.classList.add('input-error');
+            }
+
+            if (valid) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        function continueWith(service) {
+            switch (service) {
+                case 'google':
+                    window.location.href = 'https://accounts.google.com/signin';
+                    break;
+                case 'facebook':
+                    window.location.href = 'https://www.facebook.com/login';
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

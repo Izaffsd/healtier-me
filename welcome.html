@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Created - Welcome</title>
+    <link href="https://cdn.jsdelivr.net/npm/lucide-icons@0.17.0/dist/index.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui;
+        }
+
+        body {
+            background-color: #1a1f2b;
+            color: white;
+            height: 100vh;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Welcome Screen Styles */
+        .welcome-screen {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-size: 1.1rem;
+            margin-bottom: 2.1rem;
+        }
+
+        .welcome-subtitle {
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .calorie-box {
+            background-color: #2a2a2a;
+            padding: 24px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 32px;
+        }
+
+        .calorie-value {
+            font-size: 48px;
+            color: #4ade80;
+            margin: 12px 0;
+        }
+
+        .checkbox-group {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 24px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .checkbox-item input {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .next-button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        hr{
+            position: relative;
+            top: 3.5rem;
+            border: solid 1px rgba(82, 82, 82, 0.96);
+        }
+    </style>
+</head>
+<body>
+
+
+<hr>
+
+<div id="welcome-screen" class="welcome-screen">
+    <h1 class="welcome-title">Account Created</h1>
+
+    <h2 class="welcome-subtitle">Congratulations, Is!</h2>
+    <p style="margin-bottom: 2rem;">Your custom plan is ready and you're one step closer to your goal weight.</p>
+    
+    <div class="calorie-box">
+        <p>Your daily net calorie goal is:</p>
+        <div class="calorie-value">1,500</div>
+        <p>Calories</p>
+    </div>
+
+    <div class="checkbox-group">
+        <label class="checkbox-item">
+            <input type="checkbox" checked>
+            Keep me on track with reminders.
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" checked>
+            Use my phone to track my steps
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" checked>
+            Would you like to receive our emails?
+        </label>
+    </div>
+
+    <a href="dashboard.html" class="next-button">Next</a>
+
+</div>
+</body>
+</html>
